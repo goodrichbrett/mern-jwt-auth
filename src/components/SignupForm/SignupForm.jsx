@@ -22,6 +22,8 @@ class SignupForm extends Component {
     e.preventDefault();
     try {
       await authService.signup(this.state);
+      // Let <App> know a user has signed up!
+      this.props.handleSignup();
       history.push("/");
     } catch (err) {
       updateMessage(err.message);
