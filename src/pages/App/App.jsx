@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
+import Users from '../Users/Users'
 import "./App.css";
 
 class App extends Component {
@@ -54,6 +55,9 @@ class App extends Component {
             />
           )}
         />
+        <Route exact path='/users' render={({ history }) =>
+          <Users />
+        }/>
       </>
     );
   }

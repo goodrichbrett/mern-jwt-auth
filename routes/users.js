@@ -3,7 +3,7 @@ const router = express.Router();
 const usersCtrl = require('../controllers/users');
 
 /*---------- Public Routes ----------*/
-
+router.get("/", usersCtrl.index);
 
 
 /*---------- Protected Routes ----------*/
