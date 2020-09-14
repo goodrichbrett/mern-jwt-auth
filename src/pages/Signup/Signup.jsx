@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm';
 import './Signup.css';
 
-class SignupPage extends Component {
+class Signup extends Component {
   state = {
     message: ''
   }
@@ -21,4 +21,4 @@ class SignupPage extends Component {
   }
 }
 
-export default SignupPage;
+export default Signup;
