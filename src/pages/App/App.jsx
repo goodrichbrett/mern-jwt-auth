@@ -17,9 +17,10 @@ class App extends Component {
   };
 
   render() {
+
     return (
       <>
-        <NavBar user={this.state.user} />
+        <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Route
           exact
           path="/"
