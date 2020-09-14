@@ -1,3 +1,5 @@
+import tokenService from "./tokenService";
+
 const BASE_URL = '/api/auth/';
 
 function signup(user) {
@@ -15,9 +17,21 @@ function signup(user) {
     console.log(json, '<-- the error')
     throw new Error(`${json.err}`)
   })
-  .then(data => data)
+  .then(({ token }) => {
+    tokenService.setToken(token);
+  })
+}
+
+function getUser() {
+  return tokenService.getUserFromToken();
+}
+
+function logout() {
+  tokenService.removeToken();
 }
 
 export default {
-  signup
+  signup,
+  getUser,
+  logout,
 };

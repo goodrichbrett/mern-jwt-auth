@@ -3,10 +3,18 @@ import { Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
+import authService from "../../services/authService";
 import "./App.css";
 
 class App extends Component {
-  state = {};
+  state = {
+    user: authService.getUser()
+  };
+
+  handleLogout = () => {
+    authService.logout();
+    this.setState({ user: null });
+  };
 
   render() {
     return (
