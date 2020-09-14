@@ -16,7 +16,7 @@ class App extends Component {
     this.setState({ user: null });
   };
 
-  handleSignup = () => {
+  handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
   };
 
@@ -40,7 +40,7 @@ class App extends Component {
           render={({ history }) => (
             <Signup
               history={history}
-              handleSignup={this.handleSignup}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           )}
         />
@@ -50,6 +50,7 @@ class App extends Component {
           render={({ history }) => (
             <Login
               history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           )}
         />
