@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
-import Users from '../Users/Users'
+import Users from "../Users/Users";
 import "./App.css";
 
 class App extends Component {
   state = {
-    user: authService.getUser()
+    user: authService.getUser(),
   };
 
   handleLogout = () => {
@@ -22,10 +22,10 @@ class App extends Component {
   };
 
   render() {
-
+    const {user} = this.state
     return (
       <>
-        <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
+        <NavBar user={user} handleLogout={this.handleLogout} />
         <Route
           exact
           path="/"
@@ -55,9 +55,11 @@ class App extends Component {
             />
           )}
         />
-        <Route exact path='/users' render={({ history }) =>
-          <Users />
-        }/>
+        <Route
+          exact
+          path="/users"
+          render={() => (user ? <Users /> : <Redirect to="/login" />)}
+        />
       </>
     );
   }
